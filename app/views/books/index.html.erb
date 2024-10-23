@@ -1,8 +1,25 @@
 <h1>一覧</h1>
-
-<% @books.each do |book| %>
-    <p>タイトル練習</p>
-    <span><%=link_to book.title, book_path(book.id) %></span>
-    <p>本文</p>
-    <span><%= book.body %></span>
-<% end %>
+<div class="album py-5 bg-body-tertiary">
+  <div class="container">
+    <div class="row">
+      <% @books.each do |book| %>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                タイトル：
+                <%= link_to book.title, book_path(book.id) %>
+              </h5>
+              <p class="card-text">
+                本文：<%= book.body %>
+              </p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">作成日: <%= book.created_at.strftime("%Y年%m月%d日") %></small>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
